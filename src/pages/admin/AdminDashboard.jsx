@@ -57,7 +57,8 @@ const AdminDashboard = () => {
       cooling_capacity: "",
       star: "",
       refrigerent: "",
-      discount: ""
+      discount: "",
+      ratings: { rating: 0, total_reviews: 0, reviews: [] }
   };
   const [newProduct, setNewProduct] = useState(emptyProduct);
 
@@ -298,6 +299,31 @@ const AdminDashboard = () => {
       });
   };
 
+  const handleAddReview = () => {
+      setNewProduct(prev => ({
+          ...prev,
+          ratings: {
+              ...prev.ratings,
+              reviews: [...(prev.ratings?.reviews || []), { reviewer: '', rating: 5, comment: '', date: new Date().toISOString() }]
+          }
+      }));
+  };
+
+  const handleUpdateReview = (index, field, value) => {
+      setNewProduct(prev => {
+          const updatedReviews = [...(prev.ratings?.reviews || [])];
+          updatedReviews[index] = { ...updatedReviews[index], [field]: value };
+          return { ...prev, ratings: { ...prev.ratings, reviews: updatedReviews } };
+      });
+  };
+
+  const handleRemoveReview = (index) => {
+      setNewProduct(prev => {
+          const updatedReviews = prev.ratings.reviews.filter((_, i) => i !== index);
+          return { ...prev, ratings: { ...prev.ratings, reviews: updatedReviews } };
+      });
+  };
+
   // Open Modal Helpers
   const openAddModal = () => {
       setNewProduct(emptyProduct);
@@ -320,7 +346,8 @@ const AdminDashboard = () => {
           cooling_capacity: product.cooling_capacity || "",
           star: product.star || "",
           refrigerent: product.refrigerent || "",
-          discount: product.discount || ""
+          discount: product.discount || "",
+          ratings: product.ratings || { rating: 0, total_reviews: 0, reviews: [] }
       });
       setModalConfig({ isOpen: true, mode: 'edit', data: product });
       setFormStep(1);
@@ -1560,7 +1587,7 @@ const AdminDashboard = () => {
                   <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                       <h3 className="text-xl font-black text-gray-900 flex items-center gap-3">
                           {modalConfig.mode === 'add' ? 'Deploy New Component' : 'Update Asset Data'}
-                          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px] uppercase tracking-widest">Step {formStep} of 2</span>
+                          <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded text-[10px] uppercase tracking-widest">Step {formStep} of 3</span>
                       </h3>
                       <button onClick={() => { setModalConfig({ isOpen: false, mode: 'add', data: null }); setFormStep(1); }} className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-500 hover:bg-gray-300 hover:text-gray-900 transition-colors"><X size={16} /></button>
                   </div>
@@ -1702,6 +1729,60 @@ const AdminDashboard = () => {
 
                                   <div className="flex gap-4 mt-2">
                                       <button type="button" onClick={() => setFormStep(1)} className="w-1/3 bg-gray-100 text-gray-500 font-bold py-4 rounded-xl hover:bg-gray-200 transition-colors uppercase tracking-widest text-xs">
+                                          Back
+                                      </button>
+                                      <button type="button" onClick={() => setFormStep(3)} className="w-2/3 bg-[#0B1120] text-white font-bold py-4 rounded-xl hover:bg-gray-800 transition-colors uppercase tracking-widest text-xs shadow-lg">
+                                          Next Step
+                                      </button>
+                                  </div>
+                              </div>
+                          )}
+
+                          {formStep === 3 && (
+                              <div className="space-y-6 animate-[fadeIn_0.2s_ease-out]">
+                                  <div className="flex justify-between items-center">
+                                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Dummy Reviews (Optional)</label>
+                                      <button type="button" onClick={handleAddReview} className="flex items-center gap-1 text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-100 transition-colors">
+                                          <Plus size={14} /> Add Review
+                                      </button>
+                                  </div>
+                                  
+                                  <div className="space-y-4 max-h-[40vh] overflow-y-auto pr-2">
+                                      {newProduct.ratings?.reviews?.map((review, index) => (
+                                          <div key={index} className="bg-gray-50 p-4 rounded-xl border border-gray-200 relative">
+                                              <button type="button" onClick={() => handleRemoveReview(index)} className="absolute top-3 right-3 text-red-500 hover:text-red-700 bg-white rounded-full p-1 shadow-sm">
+                                                  <Trash2 size={14} />
+                                              </button>
+                                              <div className="grid grid-cols-2 gap-4 mb-3">
+                                                  <div>
+                                                      <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Reviewer Name</label>
+                                                      <input type="text" value={review.reviewer} onChange={(e) => handleUpdateReview(index, 'reviewer', e.target.value)} className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-600" placeholder="e.g. Rahul Sharma" required />
+                                                  </div>
+                                                  <div>
+                                                      <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Star Rating</label>
+                                                      <input type="number" min="1" max="5" step="1" value={review.rating} onChange={(e) => handleUpdateReview(index, 'rating', Number(e.target.value))} className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-600" required />
+                                                  </div>
+                                                  <div>
+                                                      <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Date</label>
+                                                      <input type="date" value={review.date ? new Date(review.date).toISOString().split('T')[0] : ''} onChange={(e) => handleUpdateReview(index, 'date', e.target.value)} className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-600" required />
+                                                  </div>
+                                              </div>
+                                              <div>
+                                                  <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Comment</label>
+                                                  <textarea value={review.comment} onChange={(e) => handleUpdateReview(index, 'comment', e.target.value)} rows="2" className="w-full bg-white border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-blue-600 resize-none" placeholder="Great product!" required></textarea>
+                                              </div>
+                                          </div>
+                                      ))}
+                                      
+                                      {(!newProduct.ratings?.reviews || newProduct.ratings.reviews.length === 0) && (
+                                          <div className="text-center p-6 border-2 border-dashed border-gray-200 rounded-xl">
+                                              <p className="text-sm font-medium text-gray-400">No dummy reviews added yet.</p>
+                                          </div>
+                                      )}
+                                  </div>
+
+                                  <div className="flex gap-4 mt-2">
+                                      <button type="button" onClick={() => setFormStep(2)} className="w-1/3 bg-gray-100 text-gray-500 font-bold py-4 rounded-xl hover:bg-gray-200 transition-colors uppercase tracking-widest text-xs">
                                           Back
                                       </button>
                                       <button disabled={uploadingImage} type="submit" className={`w-2/3 text-white font-bold py-4 rounded-xl transition-colors uppercase tracking-widest text-xs shadow-lg ${uploadingImage ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#0B1120] hover:bg-gray-800'}`}>
