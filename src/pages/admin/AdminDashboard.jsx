@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LayoutDashboard, Package, Users, LogOut, ChartNoAxesCombined, Trash2, Plus, X, Eye, Edit3, Wrench, Briefcase, CheckCircle, Settings, AlertCircle, ChevronDown } from "lucide-react";
+import { LayoutDashboard, Package, Users, LogOut, ChartNoAxesCombined, Trash2, Plus, X, Eye, EyeOff, Edit3, Wrench, Briefcase, CheckCircle, Settings, AlertCircle, ChevronDown } from "lucide-react";
 import { API_URL, apiFetch } from '../../config/api';
 import toast from 'react-hot-toast';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
@@ -28,6 +28,8 @@ const AdminDashboard = () => {
   
   // Settings State
   const [settingsForm, setSettingsForm] = useState({ email: '', currentPassword: '', newPassword: '' });
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   
   // Custom Confirmation Dialog State
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, message: '', onConfirm: null });
@@ -1547,25 +1549,43 @@ const AdminDashboard = () => {
                     </div>
                     <div>
                         <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">New Password (Optional)</label>
-                        <input 
-                            type="password" 
-                            value={settingsForm.newPassword}
-                            onChange={(e) => setSettingsForm({ ...settingsForm, newPassword: e.target.value })}
-                            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-700/50"
-                            placeholder="Enter new password"
-                        />
+                        <div className="relative">
+                            <input 
+                                type={showNewPassword ? "text" : "password"} 
+                                value={settingsForm.newPassword}
+                                onChange={(e) => setSettingsForm({ ...settingsForm, newPassword: e.target.value })}
+                                className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-blue-700/50"
+                                placeholder="Enter new password"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowNewPassword(!showNewPassword)}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none"
+                            >
+                                {showNewPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
+                        </div>
                     </div>
                     <hr className="border-gray-100" />
                     <div>
                         <label className="block text-xs font-bold text-red-500 uppercase tracking-wider mb-2">Current Password (Required)</label>
-                        <input 
-                            type="password" 
-                            required
-                            value={settingsForm.currentPassword}
-                            onChange={(e) => setSettingsForm({ ...settingsForm, currentPassword: e.target.value })}
-                            className="w-full bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-600/50"
-                            placeholder="Enter current password to verify"
-                        />
+                        <div className="relative">
+                            <input 
+                                type={showCurrentPassword ? "text" : "password"} 
+                                required
+                                value={settingsForm.currentPassword}
+                                onChange={(e) => setSettingsForm({ ...settingsForm, currentPassword: e.target.value })}
+                                className="w-full bg-red-50 border border-red-200 rounded-xl px-4 py-3 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-red-600/50"
+                                placeholder="Enter current password to verify"
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-red-400 hover:text-red-600 focus:outline-none"
+                            >
+                                {showCurrentPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                            </button>
+                        </div>
                     </div>
                     <button 
                         type="submit"
