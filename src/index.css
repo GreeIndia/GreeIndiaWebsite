@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* SECTION */
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* BUTTONS */
+.btn-primary {
+  background: linear-gradient(to right, #1d4ed8, #3b82f6);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.btn-secondary {
+  border: 1px solid #d1d5db;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: white;
+}
+
+::selection {
+  @apply bg-blue-400/30;
+}
