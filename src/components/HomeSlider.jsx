@@ -1,8 +1,8 @@
-﻿import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import slider1 from "../assets/images/Home_Slider/slider_image_1.png";
-import slider2 from "../assets/images/Home_Slider/slider_image_2.png";
+import slider1 from "../assets/images/Home_Slider/slider_image_1.webp";
+import slider2 from "../assets/images/Home_Slider/slider_image_2.webp";
 
 const slides = [
   { id: 1, src: slider1, alt: "GREE INDIA Slider 1" },
@@ -44,7 +44,7 @@ const HomeSlider = () => {
         className="flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {slides.map((slide) => (
+        {slides.map((slide, idx) => (
           <div key={slide.id} className="min-w-full relative bg-gray-50 flex items-center justify-center">
             {/* Optional subtle gradient overlay so controls/text stay visible if added later */}
             <div className="absolute inset-0 bg-black/5 z-10 pointer-events-none"></div>
@@ -52,6 +52,8 @@ const HomeSlider = () => {
               src={slide.src} 
               alt={slide.alt} 
               className="w-full h-auto object-contain"
+              loading={idx === 0 ? "eager" : "lazy"}
+              fetchPriority={idx === 0 ? "high" : "auto"}
             />
           </div>
         ))}

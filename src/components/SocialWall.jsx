@@ -34,7 +34,7 @@ const SocialWall = () => {
     }
 
     const ig = wallData?.instagram || {
-        imageUrl: "/hero_ac.png",
+        imageUrl: "/hero_ac.webp",
         caption: "Experience the pinnacle of corporate cooling with our latest 1.5 Ton Inverter AC series. Designed for extreme summers. ❄️✨ #GREE INDIA #CoolingSolutions #SmartAC",
         likes: "1,248 likes",
         date: "2 DAYS AGO",
@@ -42,7 +42,7 @@ const SocialWall = () => {
     };
 
     const fb = wallData?.facebook || {
-        imageUrl: "/hero_ac.png",
+        imageUrl: "/hero_ac.webp",
         caption: "Are you ready for the ultimate summer upgrade? ☀️\n\nOur new fixed-speed range is officially dropping this Friday. Get ready to experience uninterrupted cooling with 100% copper coils and advanced PM 2.5 filtration.\n\n#GreeSummer #Innovation #NewLaunch",
         likes: "2.4K",
         date: "4 hrs",

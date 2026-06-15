@@ -170,8 +170,8 @@ const Navbar = () => {
         <div className="w-full max-w-[1700px] mx-auto px-6 md:px-12 flex items-center justify-between">
 
           <Link to="/" className="flex items-center flex-shrink-0">
-            <img src="/logo/GREE INDIA.png" alt="GREE INDIA Logo" loading="eager" fetchPriority="high"
-              className="h-6 md:h-8 max-w-[150px] object-contain drop-shadow-[0_0_8px_rgba(59,130,246,0.4)] hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.6)] transition-all duration-300" />
+            <img src="/logo/GREE INDIA.webp" alt="GREE INDIA Logo" loading="eager" fetchPriority="high"
+              className="h-10 md:h-12 w-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.6)] transition-all duration-300" />
           </Link>
 
           {/* Middle Section: Desktop Links OR Inline Search */}

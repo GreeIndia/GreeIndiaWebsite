@@ -87,6 +87,7 @@ const ProductGallery = ({ hideHeading }) => {
                   src={(product.images?.[0] || product.image) || "https://placehold.co/800x800/f3f4f6/4c1d95?text=Product+Image"}
                   alt={product.name || (product.capacity ? `${product.capacity} Ton AC` : "Unnamed Asset")}
                   className="w-full h-full object-cover mix-blend-multiply"
+                  loading="lazy"
                 />
                 
                 {/* Category Badge */}

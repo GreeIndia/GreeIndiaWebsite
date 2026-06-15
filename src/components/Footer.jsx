@@ -57,7 +57,7 @@ const Footer = () => {
           {/* Brand & Mission (4 cols) */}
           <div className="md:col-span-12 lg:col-span-4 pr-4">
             <h2 className="mb-6">
-              <img src="/logo/GREE INDIA.png" alt="GREE INDIA Logo" loading="eager" fetchPriority="high" className="h-8 md:h-10 object-contain" />
+              <img src="/logo/GREE INDIA.webp" alt="GREE INDIA Logo" loading="eager" fetchPriority="high" className="h-8 md:h-10 object-contain" />
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm mb-8 font-medium">
               Architecting the future of global climate control. We deliver high-efficiency cooling infrastructures engineered for sustainability, performance, and durability in modern environments.

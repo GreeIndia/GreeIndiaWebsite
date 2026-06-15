@@ -1,4 +1,4 @@
-﻿import React from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
@@ -9,7 +9,7 @@ const services = [
     short: "CAC",
     desc: "Advanced cooling systems designed for large-scale commercial environments with high efficiency, durability, and robust performance.",
     points: ["10+ Series", "1000+ Models", "Industrial Grade"],
-    image: "/commercial_ac.png",
+    image: "/commercial_ac.webp",
   },
   {
     title: "Household Users",

@@ -13,7 +13,7 @@ const apps = [
     badge: "Editor's Choice",
     subtitle: "The Ultimate Control Center",
     description: "Elevate your living space with the Gree+ Smart App. Effortlessly control temperature, monitor energy consumption, and customize smart schedules from anywhere in the world.",
-    iconUrl: "/logo/GREE INDIA.png",
+    iconUrl: "/logo/GREE INDIA.webp",
     rating: "4.9",
     reviews: "124K+",
     features: [
@@ -34,7 +34,7 @@ const apps = [
     badge: "Enterprise Partner",
     subtitle: "For Our Premium Partners",
     description: "An exclusive digital ecosystem designed specifically for our elite dealers and installation experts. Manage tickets, track warranties, and order genuine parts with unprecedented speed.",
-    iconUrl: "/logo/GREE INDIA.png",
+    iconUrl: "/logo/GREE INDIA.webp",
     rating: "4.8",
     reviews: "12K+",
     features: [

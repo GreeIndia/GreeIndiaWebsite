@@ -18,7 +18,7 @@ const Home = () => {
     <div className="bg-gradient-to-b from-blue-50/60 via-blue-50/30 to-blue-50/60 min-h-screen flex flex-col font-inter">
       <Helmet>
         <title>Home | GREE INDIA</title>
-        <link rel="preload" as="image" href="/hero_ac.png" fetchpriority="high" />
+        <link rel="preload" as="image" href="/hero_ac.webp" fetchpriority="high" />
       </Helmet>
 
       {/* 1. CINEMATIC HERO SECTION */}
@@ -27,7 +27,7 @@ const Home = () => {
         {/* Abstract Background Visual */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero_ac.png"
+            src="/hero_ac.webp"
             alt="Luxury AC Living Room"
             loading="eager"
             fetchPriority="high"
