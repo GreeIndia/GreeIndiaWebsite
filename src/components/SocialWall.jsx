@@ -46,13 +46,13 @@ const SocialWall = () => {
         caption: "Are you ready for the ultimate summer upgrade? ☀️\n\nOur new fixed-speed range is officially dropping this Friday. Get ready to experience uninterrupted cooling with 100% copper coils and advanced PM 2.5 filtration.\n\n#GreeSummer #Innovation #NewLaunch",
         likes: "2.4K",
         date: "4 hrs",
-        postUrl: "https://www.facebook.com/GREE INDIAOFFICAL"
+        postUrl: "https://www.facebook.com/GREEINDIAOFFICAL"
     };
 
     return (
         <div className="w-full max-w-7xl mx-auto py-4 md:py-6 px-4 md:px-8">
             <div className="text-center mb-12 md:mb-16">
-                <motion.span 
+                <motion.span
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -60,7 +60,7 @@ const SocialWall = () => {
                 >
                     Stay Connected
                 </motion.span>
-                <motion.h2 
+                <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -73,9 +73,9 @@ const SocialWall = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-stretch">
-                
+
                 {/* Instagram Card */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, x: -30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -84,7 +84,7 @@ const SocialWall = () => {
                 >
                     {/* Background Glow */}
                     <div className="absolute -inset-10 bg-gradient-to-tr from-pink-500/10 via-blue-600/10 to-yellow-500/10 blur-2xl z-0 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
+
                     <div className="relative z-10 bg-white m-1 rounded-[1.8rem] flex flex-col flex-1">
                         {/* Header */}
                         <div className="flex items-center justify-between p-5 border-b border-gray-50">
@@ -97,7 +97,7 @@ const SocialWall = () => {
                                 <div>
                                     <h4 className="font-bold text-gray-900 text-sm flex items-center gap-1">
                                         gree_india_
-                                        <svg className="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                        <svg className="w-3.5 h-3.5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
                                     </h4>
                                     <p className="text-[10px] text-gray-500">India</p>
                                 </div>
@@ -106,7 +106,7 @@ const SocialWall = () => {
                                 <FaInstagram size={24} />
                             </a>
                         </div>
-                        
+
                         {/* Image */}
                         <div className="w-full aspect-square relative bg-gray-100 overflow-hidden">
                             <img src={ig.imageUrl} alt="Instagram Post" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -129,7 +129,7 @@ const SocialWall = () => {
                             </div>
                             <p className="text-sm font-bold text-gray-900 mb-2">{ig.likes}</p>
                             <p className="text-sm text-gray-800 line-clamp-3">
-                                <span className="font-bold mr-2">gree_india_</span> 
+                                <span className="font-bold mr-2">gree_india_</span>
                                 {ig.caption}
                             </p>
                             <div className="mt-auto pt-4">
@@ -140,7 +140,7 @@ const SocialWall = () => {
                 </motion.div>
 
                 {/* Facebook Card */}
-                <motion.div 
+                <motion.div
                     initial={{ opacity: 0, x: 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -149,7 +149,7 @@ const SocialWall = () => {
                 >
                     {/* Background Glow */}
                     <div className="absolute -inset-10 bg-gradient-to-tr from-blue-500/10 via-blue-600/10 to-cyan-500/10 blur-2xl z-0 pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
+
                     <div className="relative z-10 bg-white m-1 rounded-[1.8rem] flex flex-col flex-1">
                         {/* Header */}
                         <div className="flex items-center justify-between p-6">
@@ -160,11 +160,11 @@ const SocialWall = () => {
                                 <div>
                                     <h4 className="font-bold text-gray-900 text-[15px] flex items-center gap-1.5">
                                         GREE INDIA
-                                        <svg className="w-4 h-4 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                        <svg className="w-4 h-4 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
                                     </h4>
                                     <div className="flex items-center gap-1.5 text-xs text-gray-500 mt-0.5">
-                                        <span>{fb.date}</span> • <span className="w-1 h-1 rounded-full bg-gray-300"></span> 
-                                        <svg className="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                                        <span>{fb.date}</span> • <span className="w-1 h-1 rounded-full bg-gray-300"></span>
+                                        <svg className="w-3 h-3 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" /></svg>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ const SocialWall = () => {
                                 <FaFacebookF size={20} />
                             </a>
                         </div>
-                        
+
                         {/* Text Content */}
                         <div className="px-6 pb-4">
                             <p className="text-[15px] text-gray-800 leading-relaxed whitespace-pre-wrap line-clamp-3">
@@ -205,7 +205,7 @@ const SocialWall = () => {
                                     <span>89 shares</span>
                                 </div>
                             </div>
-                            
+
                             <div className="flex justify-between items-center px-2">
                                 <button className="flex items-center gap-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 px-2 sm:px-4 py-2 rounded-xl transition-colors font-semibold text-sm">
                                     <ThumbsUp size={20} /> Like
