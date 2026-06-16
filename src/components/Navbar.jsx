@@ -139,6 +139,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen]         = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState(null);
   const location  = useLocation();
   const [variants, setVariants] = useState([]);
 
@@ -156,9 +157,25 @@ const Navbar = () => {
 
   useEffect(() => { setSearchOpen(false); setOpen(false); }, [location.pathname]);
 
+  useEffect(() => {
+    if (open) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [open]);
+
   const isHome = location.pathname === "/";
   const isTransparent = isHome && !scrolled;
   const base = `transition-colors duration-300 font-bold uppercase tracking-widest text-sm ${isTransparent ? "text-gray-200 hover:text-white" : "text-gray-600 hover:text-blue-700"}`;
+
+  const navCategories = [
+    { label: "Products", links: variants.map(v => ({ label: v, to: `/products/${encodeURIComponent(v).replace(/%20/g, '-')}` })) },
+    { label: "Services", links: [{ label: "Dealer Form", to: "/dealer-form" }, { label: "Service Request", to: "/service-request" }, { label: "Installation Form", to: "/installation-form" }] },
+    { label: "Others", links: [{ label: "News Video", to: "/news-video" }, { label: "Help & Support", to: "/help-support" }, { label: "Online Feedback", to: "/online-feedback" }, { label: "Refund Order", to: "/refund-order" }] },
+  ];
+
+  const toggleMobileCategory = (category) => {
+    setMobileExpanded(prev => prev === category ? null : category);
+  };
 
   return (
     <>
@@ -183,11 +200,7 @@ const Navbar = () => {
                 <Link to="/" className={base}>Home</Link>
                 <Link to="/about" className={base}>About</Link>
 
-                {[
-                  { label: "Products", links: variants.map(v => ({ label: v, to: `/products/${encodeURIComponent(v).replace(/%20/g, '-')}` })) },
-                  { label: "Services",  links: [{ label: "Dealer Form", to: "/dealer-form" }, { label: "Service Request", to: "/service-request" }, { label: "Installation Form", to: "/installation-form" }] },
-                  { label: "Others",   links: [{ label: "News Video", to: "/news-video" }, { label: "Help & Support", to: "/help-support" }, { label: "Online Feedback", to: "/online-feedback" }, { label: "Refund Order", to: "/refund-order" }] },
-                ].map(({ label, links }) => (
+                {navCategories.map(({ label, links }) => (
                   <div key={label} className="relative group">
                     <button className={`flex items-center gap-1.5 ${base} outline-none cursor-pointer py-2`}>
                       {label}
@@ -217,7 +230,7 @@ const Navbar = () => {
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               aria-label={searchOpen ? "Close Search" : "Open Search"}
-              className={`relative p-2.5 rounded-xl transition-all duration-200 group ${
+              className={`hidden lg:block relative p-2.5 rounded-xl transition-all duration-200 group ${
                 isTransparent ? "text-white/70 hover:text-white hover:bg-white/10" : "text-gray-500 hover:text-blue-700 hover:bg-blue-50"
               }`}
             >
@@ -254,39 +267,47 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Mobile menu backdrop */}
+        <div 
+          className={`absolute top-full left-0 w-full h-[100vh] bg-black/40 backdrop-blur-sm lg:hidden transition-all duration-300 ${open ? "opacity-100 visible" : "opacity-0 invisible"}`}
+          onClick={() => setOpen(false)}
+        />
+
         {/* Mobile menu */}
-        <div className={`absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl flex flex-col transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-y-auto lg:hidden
+        <div className={`absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-2xl flex flex-col transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] overflow-y-auto lg:hidden
           ${open ? "max-h-[85vh] opacity-100 py-4" : "max-h-0 opacity-0 py-0"}`}>
 
-          <button onClick={() => { setOpen(false); setSearchOpen(true); }}
-            className="mx-6 my-3 flex items-center gap-3 px-5 py-4 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-2xl transition-all text-left">
-            <Search size={16} className="text-gray-400" />
-            <span className="text-sm font-medium text-gray-400">Search products...</span>
-          </button>
+          <div className="mx-6 my-3 relative">
+            <InlineSearch onClose={() => setOpen(false)} isTransparent={false} />
+          </div>
 
-          {[
-            { label: "Home", to: "/" },
-            { label: "About", to: "/about" },
-            { label: "Track Orders", to: "/track-orders" },
-            { label: "Help & Support", to: "/help-support" },
-            { label: "Contact Us", to: "/contact" },
-            { label: "Dealer Form", to: "/dealer-form" },
-            { label: "Service Request", to: "/service-request" },
-            { label: "Refund Order", to: "/refund-order" },
-          ].map(({ label, to }) => (
-            <Link key={to} to={to} onClick={() => setOpen(false)}
-              className="px-8 py-4 text-gray-800 font-bold uppercase tracking-widest text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors border-b border-gray-50">
-              {label}
-            </Link>
+          <Link to="/" onClick={() => setOpen(false)} className="px-8 py-4 text-gray-800 font-bold uppercase tracking-widest text-sm hover:bg-blue-50 border-b border-gray-50">Home</Link>
+          <Link to="/about" onClick={() => setOpen(false)} className="px-8 py-4 text-gray-800 font-bold uppercase tracking-widest text-sm hover:bg-blue-50 border-b border-gray-50">About</Link>
+          
+          {navCategories.map(({ label, links }) => (
+            <div key={label} className="flex flex-col border-b border-gray-50">
+              <button 
+                onClick={() => toggleMobileCategory(label)}
+                className="px-8 py-4 text-gray-800 font-bold uppercase tracking-widest text-sm hover:bg-blue-50 flex justify-between items-center w-full transition-colors"
+              >
+                {label}
+                <ChevronDown size={16} className={`transition-transform duration-300 ${mobileExpanded === label ? 'rotate-180 text-blue-700' : 'text-gray-400'}`} />
+              </button>
+              <div className={`grid transition-all duration-300 ease-in-out ${mobileExpanded === label ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                <div className="overflow-hidden flex flex-col bg-gray-50/50">
+                  {links.map((l, i) => (
+                    <Link key={i} to={l.to} onClick={() => setOpen(false)}
+                      className="pl-12 pr-8 py-3.5 text-gray-600 font-bold tracking-wider text-sm hover:text-blue-700 hover:bg-blue-50/50 transition-colors">
+                      {l.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           ))}
 
-          <div className="flex flex-col border-b border-gray-50">
-            <div className="px-8 py-4 text-gray-400 font-bold uppercase tracking-widest text-xs">Products</div>
-            {variants.map((v, i) => (
-              <Link key={i} to={`/products/${encodeURIComponent(v).replace(/%20/g, '-')}`} onClick={() => setOpen(false)}
-                className="pl-12 pr-8 py-3 text-gray-700 font-bold tracking-wider text-sm hover:bg-blue-50 hover:text-blue-700 transition-colors">{v}</Link>
-            ))}
-          </div>
+          <Link to="/track-orders" onClick={() => setOpen(false)} className="px-8 py-4 text-gray-800 font-bold uppercase tracking-widest text-sm hover:bg-blue-50 border-b border-gray-50">Track Orders</Link>
+          <Link to="/contact" onClick={() => setOpen(false)} className="px-8 py-4 text-gray-800 font-bold uppercase tracking-widest text-sm hover:bg-blue-50 border-b border-gray-50">Contact Us</Link>
         </div>
       </nav>
     </>

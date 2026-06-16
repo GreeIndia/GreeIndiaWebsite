@@ -39,7 +39,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#0b1121] text-gray-300 pt-20 overflow-hidden border-t border-white/5">
+    <footer className="relative bg-[#0b1121] text-gray-300 pt-16 md:pt-20 overflow-hidden border-t border-white/5">
 
       {/* Massive Background Typography Art */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-[30vw] sm:text-[25vw] md:text-[20rem] lg:text-[25rem] font-black text-blue-600/[0.03] tracking-tighter pointer-events-none select-none z-0 leading-[0.85] md:leading-none">

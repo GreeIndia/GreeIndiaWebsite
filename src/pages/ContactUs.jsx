@@ -82,34 +82,34 @@ const ContactUs = () => {
           <div>
             <h3 className="text-3xl font-black text-gray-900 tracking-tight mb-8">Corporate Channels</h3>
             <div className="space-y-8">
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                  <Phone size={22} />
+              <div className="flex items-center gap-4 sm:gap-6 group">
+                <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300 shadow-sm">
+                  <Phone size={22} className="w-5 h-5 sm:w-[22px] sm:h-[22px]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Direct Line</p>
+                  <p className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Direct Line</p>
                   <div className="flex flex-col">
-                    <a href="tel:+919870290602" className="text-xl font-bold text-gray-900 hover:text-blue-700 transition-colors duration-300">+91 9870290602</a>
-                    <a href="tel:+911800569786" className="text-sm font-medium text-gray-500 hover:text-blue-700 transition-colors duration-300 mt-0.5">Alternate: +91 1800 569 0786</a>
+                    <a href="tel:+919870290602" className="text-base sm:text-lg md:text-xl font-bold text-gray-900 hover:text-blue-700 transition-colors duration-300">+91 9870290602</a>
+                    <a href="tel:+911800569786" className="text-xs sm:text-sm font-medium text-gray-500 hover:text-blue-700 transition-colors duration-300 mt-0.5">Alternate: +91 1800 569 0786</a>
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300 shadow-sm">
-                  <Mail size={22} />
+              <div className="flex items-center gap-4 sm:gap-6 group">
+                <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300 shadow-sm">
+                  <Mail size={22} className="w-5 h-5 sm:w-[22px] sm:h-[22px]" />
                 </div>
-                <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Email Protocol</p>
-                  <a href="mailto:support.greeind@gmail.com" className="text-xl font-bold text-gray-900 hover:text-blue-700 transition-colors duration-300">support.greeind@gmail.com</a>
+                <div className="min-w-0">
+                  <p className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Email Protocol</p>
+                  <a href="mailto:support.greeind@gmail.com" className="text-sm sm:text-base md:text-xl font-bold text-gray-900 hover:text-blue-700 transition-colors duration-300 break-all sm:break-normal block">support.greeind@gmail.com</a>
                 </div>
               </div>
-              <div className="flex gap-6 group">
-                <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
-                  <MapPin size={22} />
+              <div className="flex gap-4 sm:gap-6 group">
+                <div className="shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-all duration-300 shadow-sm">
+                  <MapPin size={22} className="w-5 h-5 sm:w-[22px] sm:h-[22px]" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Global HQ</p>
-                  <p className="text-lg font-bold text-gray-900 leading-snug tracking-tight">Assotech Business Cresterra (ABC)<br /><span className="text-gray-500 font-medium text-base">Tower No. 1, Unit No. 1012, Sector 135, Noida, UP, 201304</span></p>
+                  <p className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Global HQ</p>
+                  <p className="text-sm sm:text-base md:text-lg font-bold text-gray-900 leading-snug tracking-tight">Assotech Business Cresterra (ABC)<br /><span className="text-gray-500 font-medium text-xs sm:text-sm md:text-base">Tower No. 1, Unit No. 1012, Sector 135, Noida, UP, 201304</span></p>
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@ const ContactUs = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-7 bg-[#0B1120] rounded-[2rem] p-10 md:p-14 shadow-2xl relative overflow-hidden text-white"
+          className="lg:col-span-7 bg-[#0B1120] rounded-[2rem] p-6 sm:p-10 md:p-14 shadow-2xl relative overflow-hidden text-white"
         >
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-700/30 blur-[100px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
 
@@ -140,7 +140,7 @@ const ContactUs = () => {
                   type="text"
                   required
                   placeholder="John Doe"
-                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold"
+                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 sm:py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold text-sm sm:text-base"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
@@ -152,7 +152,7 @@ const ContactUs = () => {
                   type="email"
                   required
                   placeholder="john@company.com"
-                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold"
+                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 sm:py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold text-sm sm:text-base"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -167,7 +167,7 @@ const ContactUs = () => {
                   type="tel"
                   required
                   placeholder="+91 98765 43210"
-                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold"
+                  className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 sm:py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold text-sm sm:text-base"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 />
@@ -176,7 +176,7 @@ const ContactUs = () => {
                 <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Subject</label>
                 <select
                   required
-                  className="w-full bg-[#0B1120] border border-white/10 text-white rounded-xl px-4 py-4 outline-none transition-all duration-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold appearance-none cursor-pointer"
+                  className="w-full bg-[#0B1120] border border-white/10 text-white rounded-xl px-4 py-3 sm:py-4 outline-none transition-all duration-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 font-bold appearance-none cursor-pointer text-sm sm:text-base"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 >
@@ -194,7 +194,7 @@ const ContactUs = () => {
                 required
                 rows={4}
                 placeholder="Define your infrastructure needs..."
-                className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 resize-none font-bold"
+                className="w-full bg-white/5 border border-white/10 text-white placeholder-gray-600 rounded-xl px-4 py-3 sm:py-4 outline-none transition-all duration-300 focus:bg-white/10 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 resize-none font-bold text-sm sm:text-base"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               ></textarea>
@@ -203,7 +203,7 @@ const ContactUs = () => {
             <button
               type="submit"
               disabled={loading}
-              className="group w-full inline-flex items-center justify-center gap-3 bg-blue-700 text-white font-bold px-8 py-5 rounded-xl transition-all duration-300 hover:bg-blue-600 shadow-[0_0_20px_rgba(29,78,216,0.3)] hover:shadow-[0_0_40px_rgba(29,78,216,0.5)] disabled:opacity-70 mt-4 uppercase tracking-widest text-sm"
+              className="group w-full inline-flex items-center justify-center gap-3 bg-blue-700 text-white font-bold px-8 py-4 sm:py-5 rounded-xl transition-all duration-300 hover:bg-blue-600 shadow-[0_0_20px_rgba(29,78,216,0.3)] hover:shadow-[0_0_40px_rgba(29,78,216,0.5)] disabled:opacity-70 mt-4 uppercase tracking-widest text-xs sm:text-sm"
             >
               {loading ? (
                 <span className="flex items-center gap-2">

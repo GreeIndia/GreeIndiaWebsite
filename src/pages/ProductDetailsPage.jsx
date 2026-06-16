@@ -183,7 +183,7 @@ const ProductDetailsPage = () => {
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="lg:col-span-5 bg-gradient-to-br from-white to-gray-50/50 rounded-3xl border border-gray-100 shadow-[inset_0_2px_20px_rgba(0,0,0,0.02)] relative h-[450px] md:h-[550px] flex items-center justify-center overflow-hidden group"
+                            className="lg:col-span-5 bg-gradient-to-br from-white to-gray-50/50 rounded-3xl border border-gray-100 shadow-[inset_0_2px_20px_rgba(0,0,0,0.02)] relative w-full aspect-video md:aspect-auto md:h-[550px] flex items-center justify-center overflow-hidden group"
                         >
                             <span className="absolute top-6 left-6 bg-white/80 backdrop-blur-md text-blue-700 px-5 py-2 text-[10px] font-bold tracking-[0.2em] uppercase rounded-full border border-blue-100 shadow-sm z-20">
                                 {product.variant || product.category || 'Premium Series'}
@@ -344,29 +344,29 @@ const ProductDetailsPage = () => {
                                 <span className="w-6 h-1 bg-blue-700 rounded-full inline-block"></span>
                                 Technical Specifications
                             </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                                <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:border-blue-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(29,78,216,0.1)] transition-all duration-300 hover:-translate-y-1 group">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                                <div className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 rounded-2xl border border-gray-100 hover:border-blue-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(29,78,216,0.1)] transition-all duration-300 hover:-translate-y-1 group">
                                     <div className="w-12 h-12 rounded-xl bg-blue-100/50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                         <Snowflake className="text-blue-700" size={24} />
                                     </div>
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Cooling Power</p>
                                     <p className="text-lg font-black text-gray-900">{product.cooling_capacity || 'Max'}W</p>
                                 </div>
-                                <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:border-amber-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(245,158,11,0.1)] transition-all duration-300 hover:-translate-y-1 group">
+                                <div className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 rounded-2xl border border-gray-100 hover:border-amber-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(245,158,11,0.1)] transition-all duration-300 hover:-translate-y-1 group">
                                     <div className="w-12 h-12 rounded-xl bg-amber-100/50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                         <Zap className="text-amber-500" size={24} />
                                     </div>
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Energy Rating</p>
                                     <p className="text-lg font-black text-gray-900">{product.star || 'Standard'} Star</p>
                                 </div>
-                                <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:border-blue-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(59,130,246,0.1)] transition-all duration-300 hover:-translate-y-1 group">
+                                <div className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 rounded-2xl border border-gray-100 hover:border-blue-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(59,130,246,0.1)] transition-all duration-300 hover:-translate-y-1 group">
                                     <div className="w-12 h-12 rounded-xl bg-blue-100/50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                         <Droplets className="text-blue-500" size={24} />
                                     </div>
                                     <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-1">Refrigerant</p>
                                     <p className="text-lg font-black text-gray-900">{product.refrigerent || 'Eco-Safe R32'}</p>
                                 </div>
-                                <div className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl border border-gray-100 hover:border-emerald-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(16,185,129,0.1)] transition-all duration-300 hover:-translate-y-1 group">
+                                <div className="bg-gradient-to-br from-gray-50 to-white p-4 sm:p-6 rounded-2xl border border-gray-100 hover:border-emerald-200 shadow-[0_2px_10px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_20px_rgba(16,185,129,0.1)] transition-all duration-300 hover:-translate-y-1 group">
                                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ${product.quantity > 0 ? 'bg-emerald-100/50' : 'bg-red-100/50'}`}>
                                         <RefreshCcw className={product.quantity > 0 ? "text-emerald-500" : "text-red-500"} size={24} />
                                     </div>
@@ -452,7 +452,7 @@ const ProductDetailsPage = () => {
                     <div className="w-full bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-blue-950/5 border border-blue-50">
                         <div className="flex flex-col lg:flex-row">
                             {/* Left Side Branding */}
-                            <div className="lg:w-5/12 bg-gray-900 p-12 lg:p-16 flex flex-col justify-center text-white relative overflow-hidden">
+                            <div className="lg:w-5/12 bg-gray-900 p-8 sm:p-12 lg:p-16 flex flex-col justify-center text-white relative overflow-hidden">
                                 {/* Ambient Dark Glow */}
                                 <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-br from-blue-950/40 to-transparent z-0 pointer-events-none"></div>
                                 
@@ -467,7 +467,7 @@ const ProductDetailsPage = () => {
                                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                         </svg>
                                     </div>
-                                    <h3 className="text-3xl lg:text-4xl font-black mb-5 tracking-tight text-white">
+                                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-4 sm:mb-5 tracking-tight text-white">
                                         Share Your <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-400">Experience</span>
                                     </h3>
                                     <p className="text-gray-400 font-medium text-lg leading-relaxed">
@@ -477,9 +477,9 @@ const ProductDetailsPage = () => {
                             </div>
                             
                             {/* Right Side Form */}
-                            <div className="lg:w-7/12 p-10 lg:p-16">
-                                <form onSubmit={handleReviewSubmit} className="space-y-8">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
+                            <div className="lg:w-7/12 p-6 sm:p-10 lg:p-16">
+                                <form onSubmit={handleReviewSubmit} className="space-y-6 sm:space-y-8">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-end">
                                         <FloatingInput 
                                             id="orderId" 
                                             label="Order ID" 
@@ -487,12 +487,12 @@ const ProductDetailsPage = () => {
                                             onChange={(e) => setOrderId(e.target.value)} 
                                             required 
                                         />
-                                        <div className="flex flex-col justify-center bg-gray-50 rounded-2xl border border-gray-100 px-6 pb-2 pt-3 h-full min-h-[72px]">
+                                        <div className="flex flex-col justify-center bg-gray-50 rounded-2xl border border-gray-100 px-4 sm:px-6 pb-2 pt-3 h-full min-h-[72px]">
                                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Rating</span>
-                                            <div className="flex gap-2">
+                                            <div className="flex gap-1.5 sm:gap-2">
                                                 {[1, 2, 3, 4, 5].map((num) => (
                                                     <button key={num} type="button" onClick={() => setRating(num)} className="transition-transform hover:scale-110 active:scale-95">
-                                                        <Star size={28} className={`transition-colors ${num <= rating ? "text-amber-400 fill-amber-400 drop-shadow-sm" : "text-gray-300"}`} />
+                                                        <Star size={24} className={`sm:w-7 sm:h-7 transition-colors ${num <= rating ? "text-amber-400 fill-amber-400 drop-shadow-sm" : "text-gray-300"}`} />
                                                     </button>
                                                 ))}
                                             </div>
@@ -512,7 +512,7 @@ const ProductDetailsPage = () => {
                                         <button 
                                             type="submit"
                                             disabled={submittingReview}
-                                            className="w-full md:w-auto px-12 bg-gray-900 hover:bg-blue-700 text-white py-5 rounded-2xl font-bold uppercase text-xs tracking-[0.2em] transition-all duration-500 shadow-lg hover:shadow-[0_15px_30px_rgba(29,78,216,0.3)] disabled:opacity-70 disabled:cursor-not-allowed hover:-translate-y-1"
+                                            className="w-full md:w-auto px-12 bg-gray-900 hover:bg-blue-700 text-white py-4 sm:py-5 rounded-2xl font-bold uppercase text-xs tracking-[0.2em] transition-all duration-500 shadow-lg hover:shadow-[0_15px_30px_rgba(29,78,216,0.3)] disabled:opacity-70 disabled:cursor-not-allowed hover:-translate-y-1"
                                         >
                                             {submittingReview ? 'Publishing...' : 'Publish Review'}
                                         </button>

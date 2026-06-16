@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Globe, Users, FlaskConical, Award, Building2, Factory, LineChart, Cpu } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -62,7 +62,7 @@ const Stats = () => {
       {/* Blueprint Grid Lines overlay */}
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgweiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0wIDM5LjVoNDBWMG0tMzkuNSAwdjQwaDQwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wMikiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==')] opacity-30 pointer-events-none"></div>
 
-      <div className="relative z-10 p-8 md:p-14 lg:p-20 grid xl:grid-cols-12 gap-12 xl:gap-8 items-center">
+      <div className="relative z-10 px-5 py-10 sm:p-8 md:p-14 lg:p-20 grid xl:grid-cols-12 gap-10 xl:gap-8 items-center">
         
         {/* Left Side: Massive Typography (5 Cols) */}
         <motion.div 
@@ -75,13 +75,13 @@ const Stats = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-blue-300 text-xs font-bold tracking-widest uppercase mb-6 w-max">
             Global Impact
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl text-white font-extrabold tracking-tight leading-[1.1] mb-6">
+          <h2 className="text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl text-white font-extrabold tracking-tight leading-[1.15] mb-5 sm:mb-6">
             Engineering the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-300">
               Future of Cooling
             </span>
           </h2>
-          <p className="text-gray-400 text-lg leading-relaxed max-w-lg mb-8">
+          <p className="text-gray-400 text-[15px] sm:text-base md:text-lg leading-relaxed max-w-lg mb-8 md:mb-12">
             Decades of relentless innovation have forged an infrastructure capable of commanding climate control environments on a strictly global scale.
           </p>
           

@@ -1,6 +1,6 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Layout from '../components/Layout';
+
 import { useCart } from '../context/CartContext';
 import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag, ShieldCheck, Truck, Award, Tag } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -17,15 +17,15 @@ const CartPage = () => {
     const gst = Math.round(cartTotal * 0.18);
 
     return (
-        <Layout>
+        <>
             <div className="min-h-screen bg-white font-inter">
                 {/* Purple top accent bar */}
                 <div className="h-1 w-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-700" />
 
-                <div className="pt-28 pb-24 px-4 md:px-10 max-w-[1300px] mx-auto">
+                <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto">
 
                     {/* ── HEADER ── */}
-                    <motion.div {...f(0)} className="mb-10 flex items-end justify-between border-b border-gray-100 pb-8">
+                    <motion.div {...f(0)} className="mb-8 flex items-end justify-between border-b border-gray-100 pb-6">
                         <div>
                             <p className="text-[10px] font-black uppercase tracking-[0.35em] text-blue-600 mb-1.5">
                                 GREE INDIA &nbsp;/&nbsp; Cart
@@ -60,10 +60,10 @@ const CartPage = () => {
                             </Link>
                         </motion.div>
                     ) : (
-                        <div className="flex flex-col xl:flex-row gap-10 items-start">
+                        <div className="flex flex-col xl:flex-row gap-6 xl:gap-10 items-start">
 
                             {/* ══ LEFT COLUMN ══ */}
-                            <div className="flex-1 min-w-0">
+                            <div className="flex-1 min-w-0 w-full">
 
                                 {/* Table header */}
                                 <motion.div {...f(0.07)} className="hidden md:grid grid-cols-12 gap-6 px-2 mb-4">
@@ -73,7 +73,7 @@ const CartPage = () => {
                                 </motion.div>
 
                                 {/* Items */}
-                                <div className="space-y-3">
+                                <div className="space-y-4">
                                     {cartItems.map((item, idx) => (
                                         <motion.div key={item._id} {...f(0.1 + idx * 0.07)}
                                             className="rounded-2xl border border-gray-100 bg-white overflow-hidden hover:border-blue-200 hover:shadow-[0_4px_20px_rgba(29,78,216,0.07)] transition-all duration-300">
@@ -151,7 +151,7 @@ const CartPage = () => {
                                 </div>
 
                                 {/* Trust bar */}
-                                <motion.div {...f(0.3)} className="mt-8 grid grid-cols-3 gap-3">
+                                <motion.div {...f(0.3)} className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-3">
                                     {[
                                         { icon: Truck,       label: 'Doorstep Delivery', sub: 'Pan India' },
                                         { icon: ShieldCheck, label: '1-Year Warranty',    sub: 'All products' },
@@ -268,7 +268,7 @@ const CartPage = () => {
                     )}
                 </div>
             </div>
-        </Layout>
+        </>
     );
 };
 

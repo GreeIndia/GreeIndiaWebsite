@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Layout from '../components/Layout';
+import { Link, useNavigate } from 'react-router-dom';
+
 import { Heart, ArrowRight, Trash2, ShoppingCart } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
@@ -10,11 +10,12 @@ import { motion } from 'framer-motion';
 const WishlistPage = () => {
   const { wishlistItems, removeFromWishlist } = useWishlist();
   const { addToCart } = useCart();
+  const navigate = useNavigate();
 
   return (
-    <Layout>
-      <div className="pt-32 pb-24 px-6 md:px-12 bg-gray-50 min-h-screen">
-        <div className="max-w-6xl mx-auto">
+    <>
+      <div className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-gray-50 min-h-screen">
+        <div className="max-w-[1400px] mx-auto">
           
           <div className="flex items-end justify-between mb-10 border-b border-gray-200 pb-6">
             <div>
@@ -28,18 +29,19 @@ const WishlistPage = () => {
           </div>
 
           {wishlistItems.length === 0 ? (
-            <div className="text-center py-24 bg-white rounded-3xl border border-gray-100 shadow-sm">
-              <div className="w-24 h-24 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Heart size={40} className="text-blue-300" />
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="flex flex-col items-center text-center py-20">
+              <div className="w-28 h-28 rounded-3xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-8">
+                <Heart size={50} className="text-blue-300" fill="currentColor" />
               </div>
-              <h3 className="text-2xl font-black text-gray-900 mb-2">Your wishlist is empty</h3>
-              <p className="text-gray-500 font-medium mb-8 max-w-md mx-auto">
+              <h2 className="text-2xl font-black text-gray-900 mb-3">Your wishlist is empty</h2>
+              <p className="text-gray-400 font-medium mb-10 max-w-sm leading-relaxed mx-auto">
                 Save items you love to your wishlist. Review them anytime and easily move them to your cart.
               </p>
-              <Link to="/products" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-bold uppercase tracking-widest text-white bg-blue-700 hover:bg-blue-800 transition-all shadow-[0_8px_24px_rgba(29,78,216,0.3)] hover:shadow-[0_12px_30px_rgba(29,78,216,0.4)] hover:-translate-y-1">
-                Explore Products <ArrowRight size={16} />
+              <Link to="/products"
+                className="px-9 py-4 rounded-2xl text-xs font-black uppercase tracking-[0.2em] text-white bg-blue-700 hover:bg-blue-800 transition-colors shadow-[0_8px_24px_rgba(29,78,216,0.3)]">
+                Explore Products
               </Link>
-            </div>
+            </motion.div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {wishlistItems.map((item, idx) => (
@@ -48,7 +50,8 @@ const WishlistPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  className="bg-white rounded-[2rem] p-5 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] hover:border-blue-100 transition-all duration-300 group flex flex-col"
+                  onClick={() => navigate(`/product/${item._id}`)}
+                  className="bg-white rounded-[2rem] p-5 border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_15px_35px_rgba(0,0,0,0.06)] hover:border-blue-100 transition-all duration-300 group flex flex-col cursor-pointer"
                 >
                   <div className="relative aspect-square rounded-2xl bg-gray-50 overflow-hidden mb-4 border border-gray-100/50">
                     <img 
@@ -57,7 +60,10 @@ const WishlistPage = () => {
                       className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-500"
                     />
                     <button 
-                      onClick={() => removeFromWishlist(item._id)}
+                      onClick={(e) => {
+                          e.stopPropagation();
+                          removeFromWishlist(item._id);
+                      }}
                       className="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-red-500 hover:bg-red-50 hover:text-red-600 shadow-sm transition-colors"
                       title="Remove from wishlist"
                     >
@@ -71,7 +77,7 @@ const WishlistPage = () => {
                   </div>
                   
                   <div className="flex-1 flex flex-col">
-                    <Link to={`/product/${item._id}`} className="block group-hover:text-blue-700 transition-colors">
+                    <div className="block group-hover:text-blue-700 transition-colors">
                       <h3 className="font-bold text-gray-900 leading-snug line-clamp-2 mb-1">
                         {item.name || (item.capacity ? `${item.capacity} Ton AC` : 'Unnamed Product')}
                       </h3>
@@ -80,7 +86,7 @@ const WishlistPage = () => {
                           {item.modelId}
                         </p>
                       )}
-                    </Link>
+                    </div>
 
                     <div className="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
                       <div>
@@ -95,7 +101,10 @@ const WishlistPage = () => {
                       </div>
                       
                       <button 
-                        onClick={() => addToCart(item, 1)}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            addToCart(item, 1);
+                        }}
                         className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-700 hover:bg-blue-700 hover:text-white transition-all shadow-sm hover:shadow-[0_4px_15px_rgba(29,78,216,0.3)] active:scale-95"
                         title="Add to Cart"
                       >
@@ -109,7 +118,7 @@ const WishlistPage = () => {
           )}
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

@@ -74,7 +74,7 @@ const Showcase = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="lg:col-span-2 relative w-full aspect-[4/3] sm:aspect-video bg-gray-900 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border flex border-gray-800 group"
+          className="lg:col-span-2 relative w-full aspect-video bg-gray-900 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border flex border-gray-800 group"
         >
 
           {/* The Video Element */}
@@ -87,15 +87,15 @@ const Showcase = () => {
           />
 
           {/* Content Overlay when Paused */}
-          <div className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent transition-opacity duration-500 flex flex-col justify-end p-5 sm:p-8 md:p-12 ${isPlaying ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}`}>
+          <div className={`absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent transition-opacity duration-500 flex flex-col justify-end p-4 sm:p-8 md:p-12 ${isPlaying ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'}`}>
             <div className="max-w-3xl translate-y-0 transition-transform duration-500">
-              <span className="px-2 py-1 md:px-3 md:py-1 bg-white/20 backdrop-blur-md rounded-md text-white text-[10px] md:text-xs font-bold tracking-widest uppercase border border-white/20 mb-2 md:mb-4 inline-block">
+              <span className="px-2 py-0.5 sm:py-1 md:px-3 md:py-1 bg-white/20 backdrop-blur-md rounded-md text-white text-[10px] md:text-xs font-bold tracking-widest uppercase border border-white/20 mb-1 sm:mb-2 md:mb-4 inline-block">
                 {activeVideo.tag}
               </span>
-              <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4 drop-shadow-lg leading-tight">
+              <h3 className="text-xl sm:text-3xl md:text-5xl font-bold text-white mb-1 sm:mb-2 md:mb-4 drop-shadow-lg leading-tight">
                 {activeVideo.title}
               </h3>
-              <p className="text-gray-200 text-sm md:text-xl font-light mb-2 md:mb-8 max-w-2xl line-clamp-2 md:line-clamp-none">
+              <p className="text-gray-200 text-xs sm:text-sm md:text-xl font-light mb-1 sm:mb-2 md:mb-8 max-w-2xl line-clamp-1 sm:line-clamp-none">
                 {activeVideo.desc}
               </p>
             </div>
@@ -103,14 +103,14 @@ const Showcase = () => {
 
           {/* Huge Play/Pause Button Area */}
           <div
-            className="absolute inset-0 flex items-center justify-center cursor-pointer"
+            className="absolute inset-0 flex items-center justify-center pb-8 sm:pb-0 cursor-pointer"
             onClick={togglePlay}
           >
-            <div className={`w-16 h-16 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-500 hover:scale-110 hover:bg-white/20 ${isPlaying ? 'opacity-0 group-hover:opacity-100 scale-90' : 'opacity-100 scale-100 shadow-[0_0_50px_rgba(255,255,255,0.2)]'}`}>
+            <div className={`w-12 h-12 sm:w-20 sm:h-20 md:w-28 md:h-28 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-500 hover:scale-110 hover:bg-white/20 ${isPlaying ? 'opacity-0 group-hover:opacity-100 scale-90' : 'opacity-100 scale-100 shadow-[0_0_50px_rgba(255,255,255,0.2)]'}`}>
               {isPlaying ? (
-                <Pause className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-md" fill="currentColor" strokeWidth={1} />
+                <Pause className="w-5 h-5 sm:w-8 sm:h-8 md:w-12 md:h-12 text-white drop-shadow-md" fill="currentColor" strokeWidth={1} />
               ) : (
-                <Play className="w-8 h-8 md:w-12 md:h-12 text-white drop-shadow-md ml-1" fill="currentColor" strokeWidth={1} />
+                <Play className="w-5 h-5 sm:w-8 sm:h-8 md:w-12 md:h-12 text-white drop-shadow-md ml-0.5 sm:ml-1" fill="currentColor" strokeWidth={1} />
               )}
             </div>
           </div>
@@ -128,18 +128,18 @@ const Showcase = () => {
                 transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`relative overflow-hidden rounded-2xl md:rounded-[2rem] cursor-pointer p-6 md:p-8 flex flex-col justify-center border transition-all duration-300 ${isActive
+                className={`min-h-[120px] md:min-h-[140px] relative overflow-hidden rounded-2xl md:rounded-[2rem] cursor-pointer p-5 md:p-8 flex flex-col justify-center border transition-all duration-300 ${isActive
                   ? 'bg-blue-700 border-blue-600 shadow-xl shadow-blue-600/20'
                   : 'bg-white border-gray-200 hover:border-blue-300 hover:shadow-md'
                   }`}
               >
                 <div className="flex items-center gap-4 relative z-10">
-                  <div className={`w-14 h-14 rounded-full flex items-center justify-center transition-colors ${isActive ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-700'}`}>
+                  <div className={`w-14 h-14 rounded-full flex-shrink-0 flex items-center justify-center transition-colors ${isActive ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-700'}`}>
                     <Film size={24} />
                   </div>
-                  <div>
-                    <h4 className={`text-xl font-bold ${isActive ? 'text-white' : 'text-gray-900'}`}>{vid.title}</h4>
-                    <p className={`text-sm mt-1 ${isActive ? 'text-blue-100' : 'text-gray-500'}`}>
+                  <div className="flex flex-col justify-center">
+                    <h4 className={`text-lg md:text-xl font-bold leading-tight line-clamp-2 ${isActive ? 'text-white' : 'text-gray-900'}`}>{vid.title}</h4>
+                    <p className={`text-xs md:text-sm mt-1 ${isActive ? 'text-blue-100' : 'text-gray-500'}`}>
                       Click to view chapter
                     </p>
                   </div>

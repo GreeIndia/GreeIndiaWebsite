@@ -42,14 +42,16 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B1120] flex items-center justify-center p-4 font-inter">
+    <div className="min-h-screen bg-[#0B1120] flex items-center justify-center p-4 font-inter relative">
       
       {/* Cinematic background elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-700/20 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-700/20 rounded-full blur-[120px]"></div>
+      </div>
 
-      <div className="relative z-10 w-full max-w-md bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-10 shadow-2xl">
+      <div className="relative z-10 w-full max-w-md bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl mx-auto mt-[-10vh]">
         
-        <div className="flex flex-col items-center mb-10">
+        <div className="flex flex-col items-center mb-8 md:mb-10">
           <div className="w-16 h-16 bg-blue-700/20 rounded-full flex items-center justify-center mb-4">
             <LockKeyhole size={28} className="text-blue-500" />
           </div>

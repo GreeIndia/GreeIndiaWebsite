@@ -39,7 +39,7 @@ const Home = () => {
         </div>
 
         {/* Hero Content Card */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 mt-16 md:mt-0 flex flex-col items-center justify-center text-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex flex-col items-center justify-center text-center">
 
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -102,7 +102,7 @@ const Home = () => {
       <HeroCategories />
 
       {/* THE MAIN CONTENT BODY - distinct spacing below Hero */}
-      <main className="relative z-20 flex-grow pt-8 md:pt-16 space-y-8 md:space-y-12 pb-16 overflow-hidden">
+      <main className="relative z-20 flex-grow pt-8 md:pt-16 space-y-8 md:space-y-12 pb-8 md:pb-16 overflow-hidden">
 
         {/* 1. SERVICES */}
         <section id="services" className="w-full px-4 md:px-8 lg:px-12 mx-auto">
@@ -206,7 +206,7 @@ const Home = () => {
         </section>
 
         {/* 6. CONTACT */}
-        <section id="contact" className="relative w-full px-4 md:px-8 lg:px-12 mx-auto">
+        <section id="contact" className="relative w-full px-0 md:px-8 lg:px-12 mx-auto">
           <Contact />
         </section>
 

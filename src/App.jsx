@@ -97,9 +97,10 @@ const AppContent = () => {
           <Route path="/track-orders" element={<TrackOrders />} />
           
           {/* SECURE ADMIN ROUTES */}
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/product/:productId" element={<AdminProductView />} />
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/product/:productId" element={<AdminProductView />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/:tab" element={<AdminDashboard />} />
           
           {/* CATCH ALL 404 ROUTE */}
           <Route path="*" element={<NotFound />} />

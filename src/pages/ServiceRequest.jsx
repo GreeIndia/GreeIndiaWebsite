@@ -1,5 +1,5 @@
-﻿import React, { useState } from "react";
-import { Send, Wrench, ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
+import React, { useState } from "react";
+import { Send, Wrench, ArrowRight, ArrowLeft, CheckCircle, ChevronDown } from "lucide-react";
 import { fetchLocationByPincode } from "../utils/pincode";
 import { API_URL, apiFetch } from "../config/api";
 import toast from 'react-hot-toast';
@@ -237,13 +237,17 @@ const ServiceRequest = () => {
                     </div>
                     <div className="space-y-2">
                         <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">State</label>
-                        <select required
-                          className="w-full bg-gray-50 border border-gray-100 text-gray-900 rounded-xl px-4 py-4 outline-none transition-all duration-300 focus:bg-white focus:ring-2 font-bold focus:border-blue-600 focus:ring-blue-600/20 appearance-none cursor-pointer"
-                          value={formData.state} onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                        >
-                          <option value="">Select State / UT</option>
-                          {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
-                        </select>
+                        <div className="relative">
+                          <select required
+                            className="w-full bg-gray-50 border border-gray-100 text-gray-900 rounded-xl pl-4 pr-12 py-4 outline-none transition-all duration-300 focus:bg-white focus:ring-2 font-bold focus:border-blue-600 focus:ring-blue-600/20 appearance-none cursor-pointer"
+                            style={{ backgroundImage: 'none' }}
+                            value={formData.state} onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                          >
+                            <option value="">Select State / UT</option>
+                            {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+                          </select>
+                          <ChevronDown size={18} className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+                        </div>
                     </div>
                   </div>
 
